@@ -1,0 +1,14 @@
+{
+  "name": "@manythings-dao/opensea-migration-sdk",
+  "version": "0.1.0",
+  "author": "Junho Yeo <i@junho.io>",
+  "license": "MIT",
+  "packageManager": "yarn@3.1.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/manythings-dao/opensea-migration-sdk",
+  "devDependencies": {
+    "@types/node": "^17.0.8",
+    "typescript": "^4.5.4"
+  }
+}
