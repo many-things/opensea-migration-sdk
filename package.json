@@ -6,6 +6,10 @@
   "packageManager": "yarn@3.1.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "tsc && node dist",
+    "build": "tsc"
+  },
   "repository": "https://github.com/manythings-dao/opensea-migration-sdk",
   "devDependencies": {
     "@types/node": "^17.0.8",
