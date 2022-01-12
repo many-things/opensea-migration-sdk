@@ -2,12 +2,37 @@ import axios from 'axios'
 import QueryString from 'query-string'
 
 type Address = string
+type UnixTimestamp = number
+
 type OpenseaAsset = {
   asset_contract: {
     address: Address
   }
 }
-type OpenseaOrder = any
+type OpenseaOrder = {
+  id: number
+  listing_time: UnixTimestamp
+  expiration_time: UnixTimestamp
+  maker: {
+    address: Address
+  }
+  current_price: string
+  current_bounty: string
+  bounty_multiple: string
+  quantity: string
+  approved_on_chain: boolean
+  cancelled: boolean
+  finalized: boolean
+  payment_token: string
+  marked_invalid: boolean
+
+  maker_relayer_fee: string
+  taker_relayer_fee: string
+  maker_protocol_fee: string
+  taker_protocol_fee: string
+  maker_referrer_fee: string
+  taker_referrer_fee: undefined
+}
 
 type InternalAsset = any
 type InternalOrder = any
@@ -63,24 +88,9 @@ export const getOrdersByAssetContractAddress = async (
     bountyMultiple: order.bounty_multiple,
     quantity: parseInt(order.quantity),
 
-    // approvedOnChain: order.approved_on_chain,
     cancelled: order.cancelled,
-    // finalized: order.finalized,
     paymentToken: order.payment_token,
     markedInvalid: order.marked_invalid,
-
-    // relayerFee: {
-    //   maker: order.maker_relayer_fee,
-    //   taker: order.taker_relayer_fee,
-    // },
-    // protocolFee: {
-    //   maker: order.maker_protocol_fee,
-    //   taker: order.taker_protocol_fee,
-    // },
-    // referrerFee: {
-    //   maker: order.maker_referrer_fee,
-    //   taker: order.taker_referrer_fee,
-    // },
   }))
 }
 
