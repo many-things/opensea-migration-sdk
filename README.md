@@ -3,6 +3,23 @@
 - Methods are to be separated more precisely
 
 ```ts
+/**
+  * @description Get assets and orders from address
+  */
+getAssetsByAccountAddress(address)
+getOrdersByAccountAddress(address)
+
+/**
+  * @description Returns list of orders made at specific asset
+  */
+getOrdersByAssetContractAddress(assetContractAddress, tokenId)
+```
+
+## ⚡️ Action
+```ts
+/**
+ * @param {string} accountAddress - Someone's wallet address
+ */
 lookupAccountAddress('0x8ee55f30b24e42827cb4aad0b75454b92b99f106')
 ```
 
