@@ -7,17 +7,18 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "tsc && node dist",
+    "start": "tsc && node dist/playground",
     "build": "tsc"
   },
   "repository": "https://github.com/manythings-dao/opensea-migration-sdk",
   "devDependencies": {
+    "@types/bn.js": "^5.1.0",
     "@types/node": "^17.0.8",
     "typescript": "^4.5.4"
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "bignumber.js": "^9.0.2",
+    "bn.js": "^5.2.0",
     "query-string": "^7.1.0",
     "web3-utils": "^1.6.1"
   }

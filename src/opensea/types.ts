@@ -1,8 +1,7 @@
 // https://github.com/ProjectOpenSea/opensea-js/blob/master/src/types.ts
 
 /* eslint-disable import/no-unused-modules */
-import BigNumber from 'bignumber.js'
-import * as Web3 from 'web3-utils'
+import BigNumber from 'bn.js'
 
 import { ECSignature, HowToCall, Network, Token, WyvernOrder } from './wyvern'
 

@@ -35,9 +35,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
+            ["@types/bn.js", "npm:5.1.0"],
             ["@types/node", "npm:17.0.8"],
             ["axios", "npm:0.24.0"],
-            ["bignumber.js", "npm:9.0.2"],
+            ["bn.js", "npm:5.2.0"],
             ["query-string", "npm:7.1.0"],
             ["typescript", "patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=493e53"],
             ["web3-utils", "npm:1.6.1"]
@@ -59,9 +60,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["@manythings-dao/opensea-migration-sdk", "workspace:."],
+            ["@types/bn.js", "npm:5.1.0"],
             ["@types/node", "npm:17.0.8"],
             ["axios", "npm:0.24.0"],
-            ["bignumber.js", "npm:9.0.2"],
+            ["bn.js", "npm:5.2.0"],
             ["query-string", "npm:7.1.0"],
             ["typescript", "patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=493e53"],
             ["web3-utils", "npm:1.6.1"]
@@ -235,15 +237,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["base-x", "npm:3.0.9"],
             ["safe-buffer", "npm:5.2.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["bignumber.js", [
-        ["npm:9.0.2", {
-          "packageLocation": "./.yarn/cache/bignumber.js-npm-9.0.2-583f690302-8637b71d0a.zip/node_modules/bignumber.js/",
-          "packageDependencies": [
-            ["bignumber.js", "npm:9.0.2"]
           ],
           "linkType": "HARD",
         }]

@@ -1,4 +1,4 @@
-import BigNumber from 'bignumber.js'
+import BigNumber from 'bn.js'
 
 // https://github.com/ProjectWyvern/wyvern-schemas/blob/master/src/types.ts
 export interface Token {
