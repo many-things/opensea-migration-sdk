@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "query-string": "^7.1.0"
+    "bignumber.js": "^9.0.2",
+    "query-string": "^7.1.0",
+    "web3-utils": "^1.6.1"
   }
 }
