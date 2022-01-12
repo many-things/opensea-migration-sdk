@@ -19,7 +19,6 @@
   "dependencies": {
     "axios": "^0.24.0",
     "bn.js": "^5.2.0",
-    "query-string": "^7.1.0",
-    "web3-utils": "^1.6.1"
+    "query-string": "^7.1.0"
   }
 }
