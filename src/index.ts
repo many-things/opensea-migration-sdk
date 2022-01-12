@@ -122,7 +122,7 @@ export const getOrdersByAccountAddress = async (
     }),
     {
       headers: {
-        'X-API-KEY': 'bea970cbbdae445a9f01b827f9ac227e',
+        'x-api-key': 'bea970cbbdae445a9f01b827f9ac227e',
       },
     },
   )
@@ -175,13 +175,17 @@ export const lookupAccountAddress = async (
             }
             resolve()
           })
-          .catch((error) => console.log(error.message))
+          .catch((error) => console.log(error.message, error.response.data))
       })
     }),
   )
 
   const orders = await getOrdersByAccountAddress(address).catch((error) => {
-    console.log(error.message)
+    console.log(
+      'Error while fetching orders by account',
+      error.message,
+      error.response.data,
+    )
     return []
   })
   return {
