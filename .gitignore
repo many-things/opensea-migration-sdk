@@ -1,4 +1,5 @@
 dist
+playground.json
 
 /.yarn/*
 !/.yarn/patches

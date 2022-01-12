@@ -34,6 +34,7 @@ type OpenseaOrder = {
   taker_referrer_fee: undefined
 }
 
+// FIXME: Update types
 type InternalAsset = any
 type InternalOrder = any
 
@@ -94,7 +95,16 @@ export const getOrdersByAssetContractAddress = async (
   }))
 }
 
-export const lookupAccountAddress = async (address: Address) => {
+type AssetRecord = Record<
+  Address,
+  {
+    asset: OpenseaAsset
+    orders: InternalOrder[]
+  }
+>
+export const lookupAccountAddress = async (
+  address: Address,
+): Promise<AssetRecord> => {
   let record: Record<Address, InternalOrder> = {}
   const assets = await getAssetsByAccountAddress(address)
 
@@ -105,6 +115,7 @@ export const lookupAccountAddress = async (address: Address) => {
         getOrdersByAssetContractAddress(assetContractAddress).then((orders) => {
           record[assetContractAddress] = {
             ...record[assetContractAddress],
+            asset,
             orders,
           }
           resolve()
