@@ -159,35 +159,51 @@ export const lookupAccountAddress = async (
   maxAssets: number = 10,
 ): Promise<LookupInformation> => {
   let assetRecord: Record<Address, InternalOrder> = {}
-  const assets = await getAssetsByAccountAddress(address)
-
-  await Promise.all(
-    assets.slice(0, maxAssets).map((asset: OpenseaAsset) => {
-      return new Promise<void>((resolve) => {
-        const tokenId = asset.token_id
-        const assetContractAddress = asset.asset_contract.address
-        getOrdersByAssetContractAddress(assetContractAddress, tokenId)
-          .then((orders) => {
-            assetRecord[assetContractAddress] = {
-              ...assetRecord[assetContractAddress],
-              asset,
-              orders,
-            }
-            resolve()
-          })
-          .catch((error) => console.log(error.message, error.response.data))
+  const [_, orders] = await Promise.all([
+    getAssetsByAccountAddress(address)
+      .then((assets) => {
+        return Promise.all(
+          assets.slice(0, maxAssets).map((asset: OpenseaAsset) => {
+            return new Promise<void>((resolve) => {
+              const tokenId = asset.token_id
+              const assetContractAddress = asset.asset_contract.address
+              getOrdersByAssetContractAddress(assetContractAddress, tokenId)
+                .then((orders) => {
+                  assetRecord[assetContractAddress] = {
+                    ...assetRecord[assetContractAddress],
+                    asset,
+                    orders,
+                  }
+                  resolve()
+                })
+                .catch((error) =>
+                  console.log(
+                    'Error while fetching orders by asset',
+                    error.message,
+                    error.response.data,
+                  ),
+                )
+            })
+          }),
+        )
       })
+      .catch((error) => {
+        console.log(
+          'Error while fetching assets by account',
+          error.message,
+          error.response.data,
+        )
+      }),
+    getOrdersByAccountAddress(address).catch((error) => {
+      console.log(
+        'Error while fetching orders by account',
+        error.message,
+        error.response.data,
+      )
+      return []
     }),
-  )
+  ])
 
-  const orders = await getOrdersByAccountAddress(address).catch((error) => {
-    console.log(
-      'Error while fetching orders by account',
-      error.message,
-      error.response.data,
-    )
-    return []
-  })
   return {
     orders,
     assets: assetRecord,
